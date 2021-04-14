@@ -1,0 +1,121 @@
+options:
+	pm: &7GameModes &8» &7No Permission!
+	prefix: &7GameModes &8» 
+
+# - Help - #
+
+command gmhelp:
+	trigger:
+		send "&7Gamemode Help - [] = alias, - = description"
+		send "&9/gmc [/gm c/1] &7 - Gamemode creative"
+		send "&9/gms [/gm s/0] &7 - Gamemode survival"
+		send "&9/gmsp [/gm sp/3] &7 - Gamemode spectator"
+		send "&9/gma [/gm a/2] &7 - Gamemode adventure"
+		
+# - Short Aliases - #
+
+# - GMC - #
+
+command gmc [<player>]:
+	permission: gmc
+	permission message: {@pm}
+	trigger:
+		arg-1 isn't set:
+			set player's gamemode to creative
+			send "{@prefix} Set gamemode to &9Creative&7!"
+			send "<##228B22>[Mod Logs] <##228B22>%player% <##228B22>set their gamemode to creative!" to all players where [input has permission "admin"]
+		arg-1 is set:
+			player has permission "gmc.others":
+				set arg-1's gamemode to creative
+				send "{@prefix} Set &9%arg-1%&9's&7 gamemode to creative!"
+				send "{@prefix} Set your gamemode to creative!" to arg-1
+				send "<##FF4500>[Admin Logs] &9%player% <##FF4500> set &9%arg-1%&9's <##FF4500>gamemode to creative!" to all players where [input has permission "admin"]
+
+# - GMS - #
+
+command gms [<player>]:
+	permission: gms
+	permission message: {@pm}
+	trigger:
+		arg-1 isn't set:
+			set player's gamemode to survival
+			send "{@prefix} Set gamemode to &9Survival&7!"
+			send "<##228B22>[Mod Logs] <##228B22>%player% <##228B22>set their gamemode to survival!" to all players where [input has permission "admin"]
+		arg-1 is set:
+			player has permission "gms.others":
+				set arg-1's gamemode to survival
+				send "{@prefix} Set &9%arg-1%&9's&7 gamemode to survival!"
+				send "{@prefix} Set your gamemode to survival!" to arg-1
+				send "<##FF4500>[Admin Logs] &9%player% <##FF4500> set &9%arg-1%&9's <##FF4500>gamemode to survival!" to all players where [input has permission "admin"]
+
+# - GMSP - #
+
+command gmsp [<player>]:
+	permission: gmsp
+	permission message: {@pm}
+	trigger:
+		arg-1 isn't set:
+			set player's gamemode to spectator
+			send "{@prefix} Set gamemode to &9Spectator&7!"
+			send "<##228B22>[Mod Logs] <##228B22>%player% <##228B22>set their gamemode to spectator!" to all players where [input has permission "admin"]
+		arg-1 is set:
+			player has permission "gmsp.others":
+				set arg-1's gamemode to creative
+				send "{@prefix} Set &9%arg-1%&9's&7 gamemode to spectator!"
+				send "{@prefix} Set your gamemode to spectator!" to arg-1
+				send "<##FF4500>[Admin Logs] &9%player% <##FF4500> set &9%arg-1%&9's <##FF4500>gamemode to spectator!" to all players where [input has permission "admin"]
+
+# - GMA - #
+
+command gma [<player>]:
+	permission: gma
+	permission message: {@pm}
+	trigger:
+		arg-1 isn't set:
+			set player's gamemode to adventure
+			send "{@prefix} Set gamemode to &9Adventure&7!"
+			send "<##228B22>[Mod Logs] <##228B22>%player% <##228B22>set their gamemode to adventure!" to all players where [input has permission "admin"]
+		arg-1 is set:
+			player has permission "gma.others":
+				set arg-1's gamemode to adventure
+				send "{@prefix} Set &9%arg-1%&9's&7 gamemode to adventure!"
+				send "{@prefix} Set your gamemode to adventure!" to arg-1
+				send "<##FF4500>[Admin Logs] &9%player% <##FF4500> set &9%arg-1%&9's <##FF4500>gamemode to adventure!" to all players where [input has permission "admin"]
+				
+# - Long Aliases - #
+
+command gm <text>:
+	trigger:
+		# - Creative - #
+		arg-1 is "c" or "1":
+			player has permission "gmc":
+				set player's gamemode to creative
+				send "{@prefix} Set gamemode to &9Creative&7!"
+				send "<##228B22>[Mod Logs] <##228B22>%player% <##228B22>set their gamemode to creative!" to all players where [input has permission "admin"]
+			else:
+				send "{@pm}"
+		# - Survival - #
+		arg-1 is "s" or "0":
+			player has permission "gms":
+				set player's gamemode to creative
+				send "{@prefix} Set gamemode to &9Survival&7!"
+				send "<##228B22>[Mod Logs] <##228B22>%player% <##228B22>set their gamemode to survival!" to all players where [input has permission "admin"]
+			else:
+				send "{@pm}"
+		# - Spectator - #
+		arg-1 is "sp" or "3":
+			player has permission "gmsp":
+				set player's gamemode to creative
+				send "{@prefix} Set gamemode to &9Spectator&7!"
+				send "<##228B22>[Mod Logs] <##228B22>%player% <##228B22>set their gamemode to spectator!" to all players where [input has permission "admin"]
+			else:
+				send "{@pm}"
+		# - Adventure - #
+		arg-1 is "a" or "2":
+			player has permission "gma":
+				set player's gamemode to creative
+				send "{@prefix} Set gamemode to &9Adventure&7!"
+				send "<##228B22>[Mod Logs] <##228B22>%player% <##228B22>set their gamemode to adventure!" to all players where [input has permission "admin"]
+			else:
+				send "{@pm}"
+		
